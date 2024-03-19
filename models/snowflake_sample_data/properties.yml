@@ -1,29 +1,31 @@
 version: 2
 
 sources:
-  - name: jaffle_shop
+  - name: snowflake_sample_data
     description: A replica of the portgres DB used to power the jaffle_shop app.
+    database: snowflake_sample_data
+    schema: TPCDS_SF10TCL
     tables:
-      - name: orders
-        columns:
-          - name: id
-            description: Primary key of the table
-            tests:
-               - unique
-               - not_null
-          - name: user_id
-            description: Foreign key to customers
+      - name: store_sales
+        description: Details about the same from a specific store
+      # - name: orders
+      #   columns:
+      #     - name: id
+      #       description: Primary key of the table
+      #       tests:
+      #          - unique
+      #          - not_null
+      #     - name: user_id
+      #       description: Foreign key to customers
 
-          - name: status
-            test:
-              - accepted_values:
-                values: ['placed', 'shipped', 'completed', 'returned_pending', 'returned']
-      - name: customers
-        columns:
-          - name: id
-            description: Primary key of the Table
-            tests: 
-              - unique
-              - not_null
-
-              
+      #     - name: status
+      #       test:
+      #         - accepted_values:
+      #           values: ['placed', 'shipped', 'completed', 'returned_pending', 'returned']
+      # - name: customers
+      #   columns:
+      #     - name: id
+      #       description: Primary key of the Table
+      #       tests: 
+      #         - unique
+      #         - not_null
